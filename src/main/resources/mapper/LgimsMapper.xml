@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zygh.lqjc2.dao.LgimsMapper">
+
+    <insert id="insertlgims">
+        INSERT INTO la_grain_inspection_multi_storey
+        (housecode,housename,archivesno,checktime,checkkind,xaxis,yaxis,storey,`data`,reportno,resultcode,resultname,statuscode,statusname,dtstate,crtime,uptime)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.housecode},
+            #{item.housename},
+            #{item.archivesno},
+            #{item.checktime},
+            #{item.checkkind},
+            #{item.xaxis},
+            #{item.yaxis},
+            #{item.storey},
+            #{item.data},
+            #{item.reportno},
+            #{item.resultcode},
+            #{item.resultname},
+            #{item.statuscode},
+            #{item.statusname},
+            #{item.dtstate},
+            #{item.crtime},
+            #{item.uptime}
+            )
+        </foreach>
+    </insert>
+    <select id="Selectcang" resultType="com.zygh.lqjc2.model.Zygh_ql">
+        SELECT  *  from zygh_lq   WHERE cang=#{cang}
+    </select>
+
+</mapper>
